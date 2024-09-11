@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    AttackArea attackArea;
+
     [SerializeField] int level;
     [SerializeField] int hp;
     [SerializeField] int moveSpeed;
@@ -13,7 +15,9 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        // GameManager 가져오기    
+        // GameManager 가져오기
+
+        attackArea = FindObjectOfType<AttackArea>();
     }
 
     void Start()
@@ -117,6 +121,9 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         // AttackArea의 List에서 자신을 제거
-
+        if (attackArea != null)
+        {
+            attackArea.removeEnemy(gameObject);
+        }
     }
 }
