@@ -38,6 +38,9 @@ public class Enemy : MonoBehaviour
         switch(level)
         {
             case 0:
+                setHP(10);
+                setMoveSpeed(1);
+                setDamage(1);
                 break;
             
             case 1:
@@ -109,5 +112,11 @@ public class Enemy : MonoBehaviour
 
             collision.gameObject.GetComponent<Tower>().minusHP(damage);
         }
+    }
+
+    private void OnDestroy()
+    {
+        // AttackArea의 List에서 자신을 제거
+
     }
 }
