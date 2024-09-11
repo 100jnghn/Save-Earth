@@ -7,8 +7,8 @@ public class Bullet : MonoBehaviour
     Tower tower;
     Vector2 dir;
 
-    [SerializeField]
-    float bulletSpeed;
+    [SerializeField] float bulletSpeed;
+    [SerializeField] float bulletPower;
 
     private void Awake()
     {
@@ -19,10 +19,16 @@ public class Bullet : MonoBehaviour
     {
         dir = tower.findTarget();
         bulletSpeed = tower.bulletSpeed;
+        bulletPower = tower.bulletPower;
     }
 
     void Update()
     {
         transform.Translate(dir * bulletSpeed * Time.deltaTime);
+    }
+
+    public float getBulletPower()
+    {
+        return bulletPower;
     }
 }

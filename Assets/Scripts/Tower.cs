@@ -5,9 +5,10 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [Header ("----- Stats -----")]
-    [SerializeField] int hp;
+    [SerializeField] float hp;
     [SerializeField] float attackTime;  float currentTime;
     public float bulletSpeed;
+    public float bulletPower;
 
     int enemyCount;
     bool isAttackReady = true;
@@ -50,6 +51,7 @@ public class Tower : MonoBehaviour
     {
         Instantiate(bullet, originPos.transform.position, originPos.transform.rotation);
 
+        currentTime = 0;
         isAttackReady = false;
     }
 
@@ -59,12 +61,12 @@ public class Tower : MonoBehaviour
         return attackArea.enemyList.Count;
     }
 
-    public void plusHP(int plusValue)
+    public void plusHP(float plusValue)
     {
         hp += plusValue;
     }
 
-    public void minusHP(int minusValue)
+    public void minusHP(float minusValue)
     {
         hp -= minusValue;
     }
