@@ -6,20 +6,23 @@ public class Enemy : MonoBehaviour
 {
     AttackArea attackArea;
     Tower tower;
+    GameManager gameManager;
 
     [SerializeField] int level;
     [SerializeField] float hp;
     [SerializeField] float moveSpeed;
     [SerializeField] float damage;
+    [SerializeField] int value;
 
     Vector2 dir;
 
     void Awake()
     {
         // GameManager 가져오기
+        gameManager = FindObjectOfType<GameManager>();
 
         // 타워의 origin position을 알기 위해 가져옴
-        tower = FindAnyObjectByType<Tower>();
+        tower = FindObjectOfType<Tower>();
 
         // 파괴될 때 enemyList에서 자신을 제거하기 위해 가져옴
         attackArea = FindObjectOfType<AttackArea>();
@@ -45,32 +48,35 @@ public class Enemy : MonoBehaviour
     // ---------- 초기값 설정 ---------- //
     void init()
     {
-        level = 1;  // GameManager 값에서 가져온 wave 값
-
-        switch(level)
+        // GameManager 값에서 가져온 wave의 level 값
+        switch(gameManager.level)
         {
             case 0:
                 setHP(1);
-                setMoveSpeed(1);
+                setMoveSpeed(0.8f);
                 setDamage(1);
+                setValue(1);
                 break;
             
             case 1:
                 setHP(1);
-                setMoveSpeed(1);
+                setMoveSpeed(0.8f);
                 setDamage(1);
+                setValue(1);
                 break;
 
             case 2:
                 setHP(1);
-                setMoveSpeed(1);
+                setMoveSpeed(0.8f);
                 setDamage(1);
+                setValue(1);
                 break;
 
             case 3:
                 setHP(1);
-                setMoveSpeed(1);
+                setMoveSpeed(0.8f);
                 setDamage(1);
+                setValue(1);
                 break;
 
             default:
@@ -83,29 +89,34 @@ public class Enemy : MonoBehaviour
     {
         dir = tower.originPos.transform.position - gameObject.transform.position;
         dir.Normalize();
-        Debug.Log("Direction Vector: " + dir);
+
+        // Debug.Log("Direction Vector: " + dir);
     }
 
     // HP 값 설정
-    void setHP(int hpValue)
+    void setHP(float hpValue)
     {
         hp = hpValue;
     }
 
     // moveSpeed 값 설정
-    void setMoveSpeed(int speedValue)
+    void setMoveSpeed(float speedValue)
     {
         moveSpeed = speedValue;
     }
 
     // Damage 값 설정
-    void setDamage(int damageValue)
+    void setDamage(float damageValue)
     {
         damage = damageValue;
     }    
     // --------------------------------- //
 
-
+    // Enemy value 값 설정 // 사망시 value를 player의 money에 더해줌
+    void setValue(int v)
+    {
+        value = v;
+    }
 
     // Tower를 향해 이동
     void moveToTower()
@@ -157,6 +168,12 @@ public class Enemy : MonoBehaviour
         if (attackArea != null)
         {
             attackArea.removeEnemy(gameObject);
+
+            // GameManager의 player 돈 추가
+            gameManager.money += value;
+
+            // money UI 변경 함수 호출
+            gameManager.callUIManagerChangeTextMoney();
         }
     }
 }

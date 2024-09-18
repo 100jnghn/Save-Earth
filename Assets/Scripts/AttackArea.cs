@@ -17,6 +17,7 @@ public class AttackArea : MonoBehaviour
         
     }
 
+    // Attack Area에 enemy가 들어오면 List에 추가
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))

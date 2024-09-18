@@ -20,7 +20,15 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
+        init();
+    }
 
+    void init()
+    {
+        hp = 20;
+        attackTime = 3f;
+        bulletSpeed = 1f;
+        bulletPower = 1f;
     }
 
     void Update()

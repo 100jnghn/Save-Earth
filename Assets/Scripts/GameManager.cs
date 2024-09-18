@@ -6,14 +6,20 @@ public class GameManager : MonoBehaviour
 {
     public int level;
 
+    [Header ("----- Player -----")]
+    public int money;
+
+    [Header ("----- Enemy -----")]
     public float enemySpawnTime;
     public float stageRemainTime;
 
+    [Header ("----- Boolean -----")]
     public bool isGaming;
     public bool onEnemySpawn;
 
-    [Header ("Conponents")]
+    [Header ("----- Conponents -----")]
     public EnemySpawnArea[] spawnAreas;
+    public UIManager uiManager;
 
     void Start()
     {
@@ -27,7 +33,8 @@ public class GameManager : MonoBehaviour
     void init()
     {
         level = 1;
-        enemySpawnTime = 5f;
+        enemySpawnTime = 4.5f;
+        stageRemainTime = 30f;
 
         isGaming = true;
         onEnemySpawn = true;
@@ -50,6 +57,18 @@ public class GameManager : MonoBehaviour
             int areaIndex = Random.Range(0, spawnAreas.Length);
             spawnAreas[areaIndex].spawnEnemy();
         }*/
+    }
+
+    void levelChange()
+    {
+
+    }
+
+    // UIManager의 changeTextMoney()를 호출
+    // enemy가 UIManager가 아닌 GameManager를 통해 값에 접근하기 때문에 별도로 함수 제작
+    public void callUIManagerChangeTextMoney()
+    {
+        uiManager.changeTextMoney();
     }
 
     void Update()
