@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [Header ("----- Stats -----")]
-    [SerializeField] float hp;
-    [SerializeField] float attackTime;  float currentTime;
-    public float bulletSpeed;
-    public float bulletPower;
+    [Header("----- Stats -----")]
+    [SerializeField] float maxHP;   // 최대 체력
+    [SerializeField] float hp;      // 현재 체력
+    [SerializeField] float attackTime;  float currentTime;  // 공격 속도
+    [SerializeField] float criticalChance;
+
+    public float criticalDamage;    // bullet에서 접근하여 치명타 dmg 계산
+    public float bulletSpeed;       // bullet에서 접근하여 속도 계산
+    public float bulletPower;       // bullet에서 접근하여 일반 dmg 계산
 
     int enemyCount;
     bool isAttackReady = true;
@@ -25,10 +29,12 @@ public class Tower : MonoBehaviour
 
     void init()
     {
-        hp = 20;
-        attackTime = 3f;
-        bulletSpeed = 1f;
-        bulletPower = 1f;
+        maxHP = hp = 20;        // 체력 초기값 설정
+        attackTime = 3f;        // 공격 속도 초기값 설정
+        bulletSpeed = 1f;       // 투사체 속도 초기값 설정
+        bulletPower = 1f;       // 공격력 초기값 설정
+        criticalChance = 0f;    // 치명타 확률 초기값 설정
+        criticalDamage = 0.1f;  // 치명타 데미지 초기값 설정
     }
 
     void Update()
