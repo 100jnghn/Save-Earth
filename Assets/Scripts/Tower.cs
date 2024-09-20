@@ -61,6 +61,29 @@ public class Tower : MonoBehaviour
         }
     }
 
+    // 치명타를 고려한 bulletPower 계산
+    public float calcualteDamage()
+    {
+        float damage = bulletPower;
+
+        // 치명타 확률이 0이면 그냥 bulletPower return
+        if (criticalChance <= 0f)
+        {
+            return damage;
+        }
+
+        // 랜덤 값을 이용해 치명타 적용 여부 판단
+        bool isCritical = Random.Range(0f, 100f) <= criticalChance;
+
+        // 치명타인 경우 데미지 증가
+        if (isCritical)
+        {
+            damage += bulletPower * criticalDamage;
+        }
+
+        return damage;
+    }
+
     private void doFire()
     {
         Instantiate(bullet, originPos.transform.position, originPos.transform.rotation);

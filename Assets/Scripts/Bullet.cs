@@ -17,9 +17,9 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        dir = tower.findTarget();
-        bulletSpeed = tower.bulletSpeed;
-        bulletPower = tower.bulletPower;
+        dir = tower.findTarget();               // bullet이 날아갈 방향
+        bulletSpeed = tower.bulletSpeed;        // bullet이 날아갈 속도
+        bulletPower = tower.calcualteDamage();  // bullet의 데이지 계산
     }
 
     void Update()

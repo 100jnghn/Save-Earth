@@ -2217,11 +2217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8ae9bd8d8147045b501ca42e0f41dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
+  maxHP: 20
   hp: 20
   attackTime: 3
   criticalChance: 0
-  criticalDamage: 0
+  criticalDamage: 0.1
   bulletSpeed: 1
   bulletPower: 1
   bullet: {fileID: 6555919844697660166, guid: 412832d2d00f10c4abf2d7ffbe5f62bc, type: 3}
