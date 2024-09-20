@@ -62,7 +62,7 @@ public class Tower : MonoBehaviour
     }
 
     // 치명타를 고려한 bulletPower 계산
-    public float calcualteDamage()
+    public float calculateDamage()
     {
         float damage = bulletPower;
 

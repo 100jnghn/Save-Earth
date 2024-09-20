@@ -155,10 +155,8 @@ public class Enemy : MonoBehaviour
         // Ãæµ¹ - Bullet
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            float bulletPower = collision.GetComponent<Bullet>().getBulletPower();
             Destroy(collision.gameObject);
-
-            minusHP(bulletPower);
+            minusHP(tower.calculateDamage());
         }
     }
 
