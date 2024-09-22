@@ -7,8 +7,8 @@ public class Tower : MonoBehaviour
     [Header("----- Stats -----")]
     [SerializeField] float maxHP;   // 최대 체력
     [SerializeField] float hp;      // 현재 체력
-    [SerializeField] float attackTime;  float currentTime;  // 공격 속도
-    [SerializeField] float criticalChance;
+    public float attackTime;  float currentTime;  // 공격 속도
+    public float criticalChance;
 
     public float criticalDamage;    // bullet에서 접근하여 치명타 dmg 계산
     public float bulletSpeed;       // bullet에서 접근하여 속도 계산
