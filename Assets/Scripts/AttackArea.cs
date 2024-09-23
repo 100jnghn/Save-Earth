@@ -54,7 +54,7 @@ public class AttackArea : MonoBehaviour
         sizeVector.x += v;
         sizeVector.y += v;
 
-        // reSize
+        // Resize
         mesh.transform.localScale = sizeVector;
         circleCollider.transform.localScale = sizeVector;
     }

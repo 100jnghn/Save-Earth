@@ -19,8 +19,8 @@ public class UIManager : MonoBehaviour
     public GameObject panelHP;
 
     [Header("----- UI Components Tab Buttons -----")]
-    public Button btnAttack;
-    public Button btnHP;
+    public Button btnAttackTab;
+    public Button btnHPTab;
 
     [Header("----- UI Components Attack -----")]
     public Button btnAttackPower;       // btn - 공격력 증가
@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
 
     // 공격 범위
     float[] attackAreaArr = { 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.1f };
-    int[] attackAreaMoney = { 0, 0, 0, 0, 0, 0 };
+    int[] attackAreaMoney = { 3, 3, 4, 5, 6, 7 };
 
     // 스탯 index를 가르키는 포인터
     int attackPowerPtr = 0;
@@ -74,6 +74,51 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // ----- Button Tab ----- //
+    // Attack Tab Button을 누름
+    public void onClickAttackTab()
+    {
+        // 누른 버튼의 이미지의 알파값을 1로 설정 -> 선명하게 보이도록
+        Color selectedColor = btnAttackTab.image.color;
+        selectedColor.a = 1f;
+        btnAttackTab.image.color = selectedColor;
+
+        // 다른 버튼들은 알파값 낮춤
+        Color unselectedColor = btnAttackTab.image.color;
+        unselectedColor.a = 0.3f;
+        btnHPTab.image.color = unselectedColor;
+
+        
+
+        // 다른 패널들 비활성화
+        panelHP.SetActive(false);
+
+        // 공격 패널 활성화
+        panelAttack.SetActive(true);
+    }
+
+    // Health Tab Button을 누름
+    public void onClickHealthTab()
+    {
+        // 누른 버튼의 이미지의 알파값을 1로 설정 -> 선명하게 보이도록
+        Color selectedColor = btnHPTab.image.color;
+        selectedColor.a = 1f;
+        btnHPTab.image.color = selectedColor;
+
+        // 다른 버튼들은 알파값 낮춤
+        Color unselectedColor = btnHPTab.image.color;
+        unselectedColor.a = 0.3f;
+        btnAttackTab.image.color = unselectedColor;
+
+
+
+        // 다른 패널들 비활성화
+        panelAttack.SetActive(false);
+
+        // 체력 패널 활성화
+        panelHP.SetActive(true);
     }
 
     // 업그레이드를 위한 money가 충분한지 체크하는 함수
