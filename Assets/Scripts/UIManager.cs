@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +29,7 @@ public class UIManager : MonoBehaviour
     public Button btnCriticalDamage;    // btn - 치명타 데미지 증가
 
     [Header("----- UI Components Health -----")]
-    public Button btnHPHeal;
+    public Button btnHPRecover;
     public Button btnHPIncrease;
 
     // ----- 스탯 증감 값 배열 ----- //
@@ -121,6 +119,10 @@ public class UIManager : MonoBehaviour
         panelHP.SetActive(true);
     }
 
+
+
+
+
     // 업그레이드를 위한 money가 충분한지 체크하는 함수
     bool checkMoney(int compare)
     {
@@ -148,13 +150,21 @@ public class UIManager : MonoBehaviour
         gameManager.money -= value;
     }
 
+
+
+
+
     // ---------- Text ---------- //
     public void changeTextMoney()
     {
         textMoney.text = " " + gameManager.money.ToString();
     }
 
-    // ---------- button ---------- //
+
+
+
+
+    // ---------- Attack Stat button ---------- //
     // 버튼 클릭 막는 함수 (최대값 도달)
     void buttonDeactive(Button button)
     {
@@ -333,5 +343,15 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnAttackRange);
         }
+    }
+
+
+
+
+
+    // ---------- Health Stat Button ---------- //
+    public void healthRecover()
+    {
+        
     }
 }

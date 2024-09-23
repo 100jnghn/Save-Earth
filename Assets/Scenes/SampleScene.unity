@@ -1240,7 +1240,7 @@ MonoBehaviour:
   btnBulletSpeed: {fileID: 392134392}
   btnCriticalChance: {fileID: 1975116273}
   btnCriticalDamage: {fileID: 673067686}
-  btnHPHeal: {fileID: 1693239672}
+  btnHPRecover: {fileID: 0}
   btnHPIncrease: {fileID: 2144255017}
 --- !u!1 &661784517
 GameObject:
@@ -2349,8 +2349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8ae9bd8d8147045b501ca42e0f41dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 20
-  hp: 20
+  maxHP: 100
+  hp: 100
   attackTime: 3
   criticalChance: 0
   criticalDamage: 0.1
@@ -2932,7 +2932,7 @@ GameObject:
   - component: {fileID: 1693239673}
   - component: {fileID: 1693239672}
   m_Layer: 5
-  m_Name: Button_HP_Heal
+  m_Name: Button_HP_Recover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
