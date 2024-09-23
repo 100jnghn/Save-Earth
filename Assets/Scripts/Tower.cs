@@ -8,11 +8,11 @@ public class Tower : MonoBehaviour
     [SerializeField] float maxHP;   // 최대 체력
     [SerializeField] float hp;      // 현재 체력
     public float attackTime;  float currentTime;  // 공격 속도
-    public float criticalChance;
+    public int criticalChance;      // 치명타 확률
 
-    public float criticalDamage;    // bullet에서 접근하여 치명타 dmg 계산
+    public float criticalDamage;    // 치명타 dmg 계산
     public float bulletSpeed;       // bullet에서 접근하여 속도 계산
-    public float bulletPower;       // bullet에서 접근하여 일반 dmg 계산
+    public float bulletPower;       // 일반 dmg
 
     int enemyCount;
     bool isAttackReady = true;
@@ -33,8 +33,8 @@ public class Tower : MonoBehaviour
         attackTime = 3f;        // 공격 속도 초기값 설정
         bulletSpeed = 1f;       // 투사체 속도 초기값 설정
         bulletPower = 1f;       // 공격력 초기값 설정
-        criticalChance = 0f;    // 치명타 확률 초기값 설정
-        criticalDamage = 0.1f;  // 치명타 데미지 초기값 설정
+        criticalChance = 0;    // 치명타 확률 초기값 설정
+        criticalDamage = 1f;  // 치명타 데미지 초기값 설정
     }
 
     void Update()
@@ -67,18 +67,18 @@ public class Tower : MonoBehaviour
         float damage = bulletPower;
 
         // 치명타 확률이 0이면 그냥 bulletPower return
-        if (criticalChance <= 0f)
+        if (criticalChance <= 0)
         {
             return damage;
         }
 
         // 랜덤 값을 이용해 치명타 적용 여부 판단
-        bool isCritical = Random.Range(0f, 100f) <= criticalChance;
+        bool isCritical = Random.Range(0, 100) < criticalChance;
 
         // 치명타인 경우 데미지 증가
         if (isCritical)
         {
-            damage += bulletPower * criticalDamage;
+            damage = bulletPower * criticalDamage;
         }
 
         return damage;

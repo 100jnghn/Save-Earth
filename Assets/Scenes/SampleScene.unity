@@ -728,7 +728,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 320833847}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 557100472}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: attackSpeedUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &320833847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,7 +940,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 392134393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 557100472}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: bulletSpeedUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &392134393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,7 +1387,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 673067687}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 557100472}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: criticalDamageUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &673067687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2989,7 +3025,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1975116274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 557100472}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: changeTextMoney
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1975116274
 MonoBehaviour:
   m_ObjectHideFlags: 0
