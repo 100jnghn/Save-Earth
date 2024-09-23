@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [Header ("----- Associations -----")]
     public GameManager gameManager;
     public Tower tower;
+    public AttackArea attackArea;
 
     [Header ("----- UI Components Player -----")]
     public Text textMoney;  // Text - 현재 money
@@ -48,12 +49,17 @@ public class UIManager : MonoBehaviour
     // 치명타 확률
     int[] criticalMoney = { 3, 3, 4, 4, 5, 6, 7, 8, 9, 10 };
 
+    // 공격 범위
+    float[] attackAreaArr = { 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.1f };
+    int[] attackAreaMoney = { 0, 0, 0, 0, 0, 0 };
+
     // 스탯 index를 가르키는 포인터
     int attackPowerPtr = 0;
     int attackSpeedPtr = 0;
     int bulletSpeedPtr = 0; // max = 8 -> bulletSpeed는 Arr가 아니라 일정 값을 multiply한다
     int criticalChancePtr = 0;
     int criticalDamagePtr = 0;
+    int attackAreaPtr = 0;
 
     // 스탯 증가값 변수
     float bulletSpeedMul = 1.3f;
@@ -255,6 +261,32 @@ public class UIManager : MonoBehaviour
         if (criticalDamagePtr >= criticalMoney.Length)
         {
             buttonDeactive(btnCriticalDamage);
+        }
+    }
+
+    // 공격 범위 증가 버튼
+    public void attackAreaUp()
+    {
+        if (!checkMoney(attackAreaMoney[attackAreaPtr]))
+        {
+            return;
+        }
+
+
+
+        // 공격 범위 증가
+        attackArea.expandArea(attackAreaArr[attackAreaPtr]);
+
+        // gameManager의 money 감소
+        purchase(attackAreaMoney[attackAreaPtr++]);
+
+        // 감소된 money를 UI에 반영
+        changeTextMoney();
+
+        // 최대치 도달 -> 버튼 클릭 막는다
+        if (attackAreaPtr >= attackAreaArr.Length)
+        {
+            buttonDeactive(btnAttackRange);
         }
     }
 }

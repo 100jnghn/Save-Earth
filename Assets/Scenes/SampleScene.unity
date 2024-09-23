@@ -1213,6 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1409901379}
   tower: {fileID: 1129565593}
+  attackArea: {fileID: 760407579}
   textMoney: {fileID: 389258404}
   panelAttack: {fileID: 183634055}
   panelHP: {fileID: 22794432}
@@ -2403,7 +2404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412917284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 557100472}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: attackAreaUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1412917284
 MonoBehaviour:
   m_ObjectHideFlags: 0
