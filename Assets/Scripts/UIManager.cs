@@ -174,7 +174,7 @@ public class UIManager : MonoBehaviour
     public void showRemainTime(float time)
     {
         time = (int)time;
-        txtRemainTime.text = time.ToString();
+        txtRemainTime.text = time.ToString() + " ";
     }
 
 
