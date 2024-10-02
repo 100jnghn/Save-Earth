@@ -49,39 +49,12 @@ public class Enemy : MonoBehaviour
     void init()
     {
         // GameManager 값에서 가져온 wave의 level 값
-        switch(gameManager.level)
-        {
-            case 0:
-                setHP(1);
-                setMoveSpeed(0.8f);
-                setDamage(1);
-                setValue(1);
-                break;
-            
-            case 1:
-                setHP(1);
-                setMoveSpeed(0.8f);
-                setDamage(1);
-                setValue(1);
-                break;
+        level = gameManager.level;
 
-            case 2:
-                setHP(1);
-                setMoveSpeed(0.8f);
-                setDamage(1);
-                setValue(1);
-                break;
-
-            case 3:
-                setHP(1);
-                setMoveSpeed(0.8f);
-                setDamage(1);
-                setValue(1);
-                break;
-
-            default:
-                break;
-        }
+        setHP(level / 3 + 1);
+        setMoveSpeed(level / 3 * 0.5f + 0.8f);
+        setDamage(1);
+        setValue(level / 3 + 1);
     }
 
     // Enemy 이동 방향 결정 (Tower가 있는 곳)

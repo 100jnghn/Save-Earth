@@ -58,4 +58,13 @@ public class EnemySpawnArea : MonoBehaviour
         // enemy 생성
         Instantiate(enemies[enemyIndex], spawnPoint, Quaternion.identity);
     }
+
+    // bullet 충돌시 bullet 파괴
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public EnemySpawnArea[] spawnAreas;
     public UIManager uiManager;
 
+
     void Start()
     {
         init();
@@ -34,10 +35,12 @@ public class GameManager : MonoBehaviour
     {
         level = 1;
         enemySpawnTime = 4.5f;
-        stageRemainTime = 30f;
+        stageRemainTime = 20f;
 
         isGaming = true;
         onEnemySpawn = true;
+
+        uiManager.changeStage(level);
     }
 
     // 랜덤으로 Spawn Areas에 있는 spawnEnemy() 호출
@@ -59,9 +62,31 @@ public class GameManager : MonoBehaviour
         }*/
     }
 
-    void levelChange()
+    void levelUp()
     {
+        level += 1;
 
+        float timeDecreaseValue;
+        if (level <=3)
+        {
+            timeDecreaseValue = 0.3f;
+        }
+        else if (level <= 7)
+        {
+            timeDecreaseValue = 0.2f;
+        }
+        else
+        {
+            timeDecreaseValue = 0.1f;
+        }
+
+
+        if (enemySpawnTime > 0.5f)
+        {
+            enemySpawnTime -= timeDecreaseValue;
+        }
+
+        uiManager.changeStage(level);
     }
 
     // UIManager의 changeTextMoney()를 호출
@@ -73,6 +98,25 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        // 스테이지 남은 시간 감소
+        decreaseRemainTime();
     }
+
+    void decreaseRemainTime()
+    {
+        uiManager.showRemainTime(stageRemainTime);
+
+        if (stageRemainTime >= 0f)
+        {
+            stageRemainTime -= Time.deltaTime;
+        }
+        else
+        {
+            levelUp();
+
+            // 다음 스테이지 시간 설정
+            stageRemainTime = level * 5 + 10;
+        }
+        
+    } 
 }

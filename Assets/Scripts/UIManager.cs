@@ -32,10 +32,14 @@ public class UIManager : MonoBehaviour
     public Button btnHPRecover;
     public Button btnHPIncrease;
 
+    [Header("----- UI Components Stage -----")]
+    public Text txtStage;
+    public Text txtRemainTime;
+
     // ----- 스탯 증감 값 배열 ----- //
     // 공격력
-    float[] attackPowerArr = { 0.2f, 0.2f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };    // Length = 8
-    int[] attackPowerMoney = { 5, 5, 5, 6, 6, 7, 7, 8 };
+    float[] attackPowerArr = { 0.4f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f };    // Length = 8
+    int[] attackPowerMoney = { 3, 3, 3, 4, 4, 5, 6, 8 };
 
     // 공격 속도
     float[] attackSpeedArr = { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 0.1f, 0.1f, 0.1f, 0.1f};   // Length = 13
@@ -160,6 +164,18 @@ public class UIManager : MonoBehaviour
         textMoney.text = " " + gameManager.money.ToString();
     }
 
+    // 레벨업 -> stage up
+    public void changeStage(int level)
+    {
+        txtStage.text = "Stage " + level.ToString();
+    }
+
+    // stage 남은 시간 표시
+    public void showRemainTime(float time)
+    {
+        time = (int)time;
+        txtRemainTime.text = time.ToString();
+    }
 
 
 
