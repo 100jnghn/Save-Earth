@@ -102,8 +102,10 @@ public class Enemy : MonoBehaviour
     {
         hp -= v;
 
+        // 총 맞고 사망하는 경우
         if (hp <= 0)
         {
+            gameManager.addScore(1);    // 점수 증가
             Destroy(gameObject);
         }
     }

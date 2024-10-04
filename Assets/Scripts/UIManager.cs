@@ -1,4 +1,6 @@
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // UI Component와 UI의 기능들을 관리하는 스크립트
@@ -15,6 +17,12 @@ public class UIManager : MonoBehaviour
     [Header("----- UI Components Panels -----")]
     public GameObject panelAttack;
     public GameObject panelHP;
+    public GameObject panelEnding;
+
+    [Header("----- UI Components Text -----")]
+    public Text txtGameScore;   // 진행중인 게임의 점수
+    public Text txtHighScore;   // 개인 최고 점수
+    public Text txtMyScore;     // 엔딩 화면에 띄울 게임 점수
 
     [Header("----- UI Components Tab Buttons -----")]
     public Button btnAttackTab;
@@ -68,14 +76,21 @@ public class UIManager : MonoBehaviour
     float criticalDamageMul = 1.1f;
     int criticalChanceAdd = 10;
 
-    void Start()
+    
+
+
+
+    // ----- 게임 시작, 종료 시 UI 관리 ----- //
+    public void gameStart()
     {
-        
+        panelEnding.SetActive(false);
     }
 
-    void Update()
+    public void gameEnd(int highScore, int myScore)
     {
-        
+        panelEnding.SetActive(true);
+        txtHighScore.text = highScore.ToString();
+        txtMyScore.text = myScore.ToString();
     }
 
     // ----- Button Tab ----- //
@@ -162,6 +177,10 @@ public class UIManager : MonoBehaviour
     public void changeTextMoney()
     {
         textMoney.text = " " + gameManager.money.ToString();
+    }
+    public void changeTextMyScore(int score)
+    {
+        txtGameScore.text = score.ToString();
     }
 
     // 레벨업 -> stage up
@@ -369,5 +388,12 @@ public class UIManager : MonoBehaviour
     public void healthRecover()
     {
         
+    }
+
+    // ----- Replay Button ----- //
+    public void replay()
+    {
+        // 현재 씬 다시 로드
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

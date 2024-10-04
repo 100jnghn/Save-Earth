@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public int level;
+
+    int highScore;
+    int myScore;
 
     [Header ("----- Player -----")]
     public int money;
@@ -33,6 +37,16 @@ public class GameManager : MonoBehaviour
     // 처음 시작할 때 초기화
     void init()
     {
+        // 타임스케일 1
+        Time.timeScale = 1;
+
+        // 최고 점수 불러오기
+        highScore = PlayerPrefs.GetInt("HighScore");
+        myScore = 0;
+
+        // UI 시작 호출
+        uiManager.gameStart();
+
         level = 1;
         enemySpawnTime = 4.5f;
         stageRemainTime = 20f;
@@ -41,6 +55,30 @@ public class GameManager : MonoBehaviour
         onEnemySpawn = true;
 
         uiManager.changeStage(level);
+    }
+
+    // 게임 종료 로직
+    public void gameEnd()
+    {
+        // 최고 기록 갱신 검사
+        if (myScore > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", myScore);
+        }
+
+        // 게임 종료 UI 
+        uiManager.gameEnd(highScore, myScore);
+
+        // 타임스케일 0
+        Time.timeScale = 0;
+    }
+
+    // 내 점수 증가 (Enemy 처치 시)
+    public void addScore(int value)
+    {
+        myScore += value;
+
+        uiManager.changeTextMyScore(myScore);
     }
 
     // 랜덤으로 Spawn Areas에 있는 spawnEnemy() 호출

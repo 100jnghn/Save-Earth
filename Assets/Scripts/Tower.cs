@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [Header("----- Associations -----")]
+    public GameManager gameManager;
+
     [Header("----- Stats -----")]
     [SerializeField] float maxHP;   // 최대 체력
     [SerializeField] float hp;      // 현재 체력
@@ -29,12 +32,12 @@ public class Tower : MonoBehaviour
 
     void init()
     {
-        maxHP = hp = 100;        // 체력 초기값 설정
+        maxHP = hp = 10;        // 체력 초기값 설정
         attackTime = 3f;        // 공격 속도 초기값 설정
         bulletSpeed = 1f;       // 투사체 속도 초기값 설정
         bulletPower = 1f;       // 공격력 초기값 설정
-        criticalChance = 0;    // 치명타 확률 초기값 설정
-        criticalDamage = 1f;  // 치명타 데미지 초기값 설정
+        criticalChance = 0;     // 치명타 확률 초기값 설정
+        criticalDamage = 1f;    // 치명타 데미지 초기값 설정
     }
 
     void Update()
@@ -106,6 +109,11 @@ public class Tower : MonoBehaviour
     public void minusHP(float minusValue)
     {
         hp -= minusValue;
+
+        if (hp <=0)
+        {
+            gameManager.gameEnd();
+        }
     }
 
     // 범위 내의 가장 가까운 enemy를 찾음
