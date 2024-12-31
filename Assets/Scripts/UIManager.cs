@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
 
     [Header ("----- UI Components Player -----")]
     public Text textMoney;  // Text - 현재 money
+    public Slider hpBar;    // HP Bar 슬라이더
+
 
     [Header("----- UI Components Panels -----")]
     public GameObject panelAttack;
@@ -23,6 +25,15 @@ public class UIManager : MonoBehaviour
     public Text txtGameScore;   // 진행중인 게임의 점수
     public Text txtHighScore;   // 개인 최고 점수
     public Text txtMyScore;     // 엔딩 화면에 띄울 게임 점수
+
+    public Text txtAttackPowerPay;  // 공격력 업그레이드를 위해 지불해야 하는 돈
+    public Text txtAttackSpeedPay;
+    public Text txtAttackRangePay;
+    public Text txtBulletSpeedPay;
+    public Text txtCriticalChancePay;
+    public Text txtCriticalDamagePay;
+
+
 
     [Header("----- UI Components Tab Buttons -----")]
     public Button btnAttackTab;
@@ -76,7 +87,8 @@ public class UIManager : MonoBehaviour
     float criticalDamageMul = 1.1f;
     int criticalChanceAdd = 10;
 
-    
+
+
 
 
 
@@ -84,6 +96,17 @@ public class UIManager : MonoBehaviour
     public void gameStart()
     {
         panelEnding.SetActive(false);
+
+        // 업그레이드를 위한 돈 UI Text 초기화
+        txtAttackPowerPay.text = attackPowerMoney[attackPowerPtr].ToString();
+        txtAttackRangePay.text = attackAreaMoney[attackAreaPtr].ToString();
+        txtAttackSpeedPay.text = attackSpeedMoney[attackSpeedPtr].ToString();
+        txtBulletSpeedPay.text = bulletSpeedMoney[bulletSpeedPtr].ToString();
+        txtCriticalChancePay.text = criticalMoney[criticalChancePtr].ToString();
+        txtCriticalDamagePay.text = criticalMoney[criticalDamagePtr].ToString();
+
+        // HP UI 초기화
+        hpBar.value = 1;
     }
 
     public void gameEnd(int highScore, int myScore)
@@ -91,6 +114,12 @@ public class UIManager : MonoBehaviour
         panelEnding.SetActive(true);
         txtHighScore.text = highScore.ToString();
         txtMyScore.text = myScore.ToString();
+    }
+
+    // ----- 체력 바 변경 ----- //
+    public void checkHP(float maxHP, float hp)
+    {
+        hpBar.value = hp/maxHP;
     }
 
     // ----- Button Tab ----- //
@@ -248,6 +277,9 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnAttackPower);
         }
+
+        // Text Pay 변경
+        txtAttackPowerPay.text = attackPowerMoney[attackPowerPtr].ToString();
     }
 
     // 공격 속도 증가 버튼
@@ -274,6 +306,9 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnAttackSpeed);
         }
+
+        // Text Pay 변경
+        txtAttackSpeedPay.text = attackSpeedMoney[attackSpeedPtr].ToString();
     }
 
     // 투사체 속도 증가 버튼
@@ -300,6 +335,9 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnBulletSpeed);
         }
+
+        // Text Pay 변경
+        txtBulletSpeedPay.text = bulletSpeedMoney[bulletSpeedPtr].ToString();
     }
 
     // 치명타 확률 증가 버튼
@@ -326,6 +364,9 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnCriticalChance);
         }
+
+        // Text Pay 변경
+        txtCriticalChancePay.text = criticalMoney[criticalChancePtr].ToString();
     }
 
     // 치명타 dmg 증가 버튼
@@ -352,6 +393,9 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnCriticalDamage);
         }
+
+        // Text Pay 변경
+        txtCriticalDamagePay.text = criticalMoney[criticalDamagePtr].ToString();
     }
 
     // 공격 범위 증가 버튼
@@ -378,6 +422,9 @@ public class UIManager : MonoBehaviour
         {
             buttonDeactive(btnAttackRange);
         }
+
+        // Text Pay 변경
+        txtAttackRangePay.text = attackAreaMoney[attackAreaPtr].ToString();
     }
 
 

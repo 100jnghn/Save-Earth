@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     AttackArea attackArea;
     Tower tower;
     GameManager gameManager;
+    SpriteRenderer sprite;
 
     [SerializeField] int level;
     [SerializeField] float hp;
@@ -27,7 +28,8 @@ public class Enemy : MonoBehaviour
         // 파괴될 때 enemyList에서 자신을 제거하기 위해 가져옴
         attackArea = FindObjectOfType<AttackArea>();
 
-            
+        // 공격한 후 색상 변화를 위해 가져옴
+        sprite = FindObjectOfType<SpriteRenderer>();
     }
 
     void Start()
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
         // GameManager 값에서 가져온 wave의 level 값
         level = gameManager.level;
 
-        setHP(level / 3 + 1);
+        setHP(level / 3 + 2);
         setMoveSpeed(level / 3 * 0.5f + 0.8f);
         setDamage(1);
         setValue(level / 3 + 1);
@@ -102,7 +104,7 @@ public class Enemy : MonoBehaviour
     {
         hp -= v;
 
-        // 총 맞고 사망하는 경우
+        // 사망하는 경우
         if (hp <= 0)
         {
             gameManager.addScore(1);    // 점수 증가
@@ -121,6 +123,12 @@ public class Enemy : MonoBehaviour
             dir = Vector2.zero;
 
             collision.gameObject.GetComponent<Tower>().minusHP(damage);
+
+            // Enemy 체력 감소
+            minusHP(1);
+
+            // 색상 변화
+            sprite.color = Color.black;
         }
     }
 

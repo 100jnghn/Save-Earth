@@ -45,14 +45,14 @@ public class AttackArea : MonoBehaviour
     }
 
     // AttackArea의 크기 증가
-    public void expandArea(float v)
+    public void expandArea(float expandValue)
     {
         // 현재 scale 값을 가져옴
         Vector2 sizeVector = new Vector2(gameObject.transform.localScale.x, gameObject.transform.localScale.y);
         
         // 현재 scale 값에 증가값 v를 더해줌
-        sizeVector.x += v;
-        sizeVector.y += v;
+        sizeVector.x += expandValue;
+        sizeVector.y += expandValue;
 
         // Resize
         mesh.transform.localScale = sizeVector;
