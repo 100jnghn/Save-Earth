@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour
     Tower tower;
     GameManager gameManager;
     SpriteRenderer sprite;
+    CircleCollider2D enemyCollider;
+
+    public AudioSource dieSound;
+    public GameObject destoyParticle;
 
     [SerializeField] int level;
     [SerializeField] float hp;
@@ -30,6 +34,9 @@ public class Enemy : MonoBehaviour
 
         // 공격한 후 색상 변화를 위해 가져옴
         sprite = FindObjectOfType<SpriteRenderer>();
+
+        // Collider 가져옴
+        enemyCollider = FindObjectOfType<CircleCollider2D>();
     }
 
     void Start()
@@ -108,7 +115,21 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             gameManager.addScore(1);    // 점수 증가
-            Destroy(gameObject);
+            dieSound.Play();            // 사운드 재생
+
+            // 이동 멈추기
+            dir = Vector2.zero;
+
+            // 폭발 이펙트 재생
+            GameObject explosion = Instantiate(destoyParticle);
+            explosion.transform.SetParent(gameObject.transform, false);
+
+            // 리스트에서 제거
+            attackArea.removeEnemy(gameObject);
+
+            sprite.enabled = false;
+            enemyCollider.enabled = false;
+            Destroy(gameObject, dieSound.clip.length);
         }
     }
 
@@ -148,7 +169,7 @@ public class Enemy : MonoBehaviour
         // AttackArea의 List에서 자신을 제거
         if (attackArea != null)
         {
-            attackArea.removeEnemy(gameObject);
+            
 
             // GameManager의 player 돈 추가
             gameManager.money += value;

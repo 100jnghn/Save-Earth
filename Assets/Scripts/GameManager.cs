@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     int highScore;
     int myScore;
+    
+    float timeDecreaseValue = 0.2f;
 
     [Header ("----- Player -----")]
     public int money;
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
         init();
 
         // enemy 생성
-        InvokeRepeating("spawnEnemyInAreas", 1f, enemySpawnTime);
+        InvokeRepeating("spawnEnemyInAreas", 0f, enemySpawnTime);
     }
 
     // 처음 시작할 때 초기화
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
         uiManager.gameStart();
 
         level = 1;
-        enemySpawnTime = 4.5f;
+        enemySpawnTime = 4.0f;
         stageRemainTime = 20f;
 
         isGaming = true;
@@ -104,25 +106,28 @@ public class GameManager : MonoBehaviour
     {
         level += 1;
 
-        float timeDecreaseValue;
-        if (level <=3)
-        {
-            timeDecreaseValue = 0.3f;
-        }
-        else if (level <= 7)
-        {
-            timeDecreaseValue = 0.2f;
-        }
-        else
-        {
-            timeDecreaseValue = 0.1f;
-        }
+        timeDecreaseValue += 0.1f;
 
-
-        if (enemySpawnTime > 0.5f)
+        if (enemySpawnTime - timeDecreaseValue > 0.02f)
         {
             enemySpawnTime -= timeDecreaseValue;
+            Debug.Log("Enemy Spawn Time : " + enemySpawnTime);
         }
+
+        if (enemySpawnTime < 0.7f)
+        {
+            enemySpawnTime -= 0.1f;
+        }
+
+        if (enemySpawnTime <= 0.05f)
+        {
+            enemySpawnTime = 0.05f;
+        } 
+        
+
+        // 새로운 Enemy Spawn InvokeRepeating 설정
+        CancelInvoke("spawnEnemyInAreas");
+        InvokeRepeating("spawnEnemyInAreas", 0.5f, enemySpawnTime);
 
         uiManager.changeStage(level);
     }

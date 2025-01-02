@@ -13,7 +13,6 @@ public class Tower : MonoBehaviour
     [SerializeField] float hp;      // 현재 체력
     public float attackTime;  float currentTime;  // 공격 속도
     public int criticalChance;      // 치명타 확률
-
     public float criticalDamage;    // 치명타 dmg 계산
     public float bulletSpeed;       // bullet에서 접근하여 속도 계산
     public float bulletPower;       // 일반 dmg
@@ -25,6 +24,11 @@ public class Tower : MonoBehaviour
     public GameObject bullet;
     public GameObject originPos;
     public AttackArea attackArea;
+
+    [Header("----- Sounds ----- ")]
+    public AudioSource attackSound;
+
+
 
     void Start()
     {
@@ -88,9 +92,14 @@ public class Tower : MonoBehaviour
         return damage;
     }
 
+    // 공격
     private void doFire()
     {
+        // Bulelt 생성
         Instantiate(bullet, originPos.transform.position, originPos.transform.rotation);
+
+        // 사운드 재생
+        attackSound.Play();
 
         currentTime = 0;
         isAttackReady = false;

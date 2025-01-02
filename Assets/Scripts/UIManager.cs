@@ -57,22 +57,22 @@ public class UIManager : MonoBehaviour
 
     // ----- 스탯 증감 값 배열 ----- //
     // 공격력
-    float[] attackPowerArr = { 0.4f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f };    // Length = 8
-    int[] attackPowerMoney = { 3, 3, 3, 4, 4, 5, 6, 8 };
+    float[] attackPowerArr = { 0.4f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 0.1f, 0.1f, 0.1f };    // Length = 8
+    int[] attackPowerMoney = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17 };
 
     // 공격 속도
     float[] attackSpeedArr = { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 0.1f, 0.1f, 0.1f, 0.1f};   // Length = 13
-    int[] attackSpeedMoney = { 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 8 };
+    int[] attackSpeedMoney = { 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 10 };
 
     // 투사체 속도
-    int[] bulletSpeedMoney = { 3, 3, 4, 5, 6, 7, 8, 9 };
+    int[] bulletSpeedMoney = { 2, 3, 4, 5, 6, 7, 8, 9 };
 
     // 치명타 확률
-    int[] criticalMoney = { 3, 3, 4, 4, 5, 6, 7, 8, 9, 10 };
+    int[] criticalMoney = { 7, 8, 9, 10, 11, 13, 15, 17, 20, 25 };
 
     // 공격 범위
     float[] attackAreaArr = { 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.1f };
-    int[] attackAreaMoney = { 3, 3, 4, 5, 6, 7 };
+    int[] attackAreaMoney = { 5, 6, 7, 10, 14, 17, 20 };
 
     // 스탯 index를 가르키는 포인터
     int attackPowerPtr = 0;
