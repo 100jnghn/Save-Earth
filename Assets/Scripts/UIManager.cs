@@ -57,22 +57,27 @@ public class UIManager : MonoBehaviour
 
     // ----- 스탯 증감 값 배열 ----- //
     // 공격력
-    float[] attackPowerArr = { 0.4f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 0.1f, 0.1f, 0.1f };    // Length = 8
-    int[] attackPowerMoney = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17 };
+    float[] attackPowerArr = { 0.4f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 
+                               0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };    // Length = 8
+    int[] attackPowerMoney = { 02, 03, 04, 05, 06, 07, 08, 09, 10, 11,
+                               13, 15, 17, 19, 20, 23, 27, 30, 35, 38, 42, 45 };
 
     // 공격 속도
-    float[] attackSpeedArr = { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 0.1f, 0.1f, 0.1f, 0.1f};   // Length = 13
-    int[] attackSpeedMoney = { 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 10 };
+    float[] attackSpeedArr = { 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.2f, 0.1f,
+                               0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f};   // Length = 13
+    int[] attackSpeedMoney = { 01, 02, 03, 03, 04, 05, 06, 06, 07, 07,
+                               08, 09, 10, 13, 17, 22, 25, 30, 35, 42 };
 
     // 투사체 속도
-    int[] bulletSpeedMoney = { 2, 3, 4, 5, 6, 7, 8, 9 };
+    int[] bulletSpeedMoney = { 02, 03, 04, 05, 07, 09, 11, 14, 17, 
+                               20, 25, 30 };
 
     // 치명타 확률
-    int[] criticalMoney = { 7, 8, 9, 10, 11, 13, 15, 17, 20, 25 };
+    int[] criticalMoney = { 7, 10, 12, 15, 18, 23, 30, 40, 52, 70 };
 
     // 공격 범위
     float[] attackAreaArr = { 0.3f, 0.3f, 0.2f, 0.2f, 0.2f, 0.1f };
-    int[] attackAreaMoney = { 5, 6, 7, 10, 14, 17, 20 };
+    int[] attackAreaMoney = { 5, 10, 15, 20, 30, 45, 60 };
 
     // 스탯 index를 가르키는 포인터
     int attackPowerPtr = 0;
@@ -83,7 +88,7 @@ public class UIManager : MonoBehaviour
     int attackAreaPtr = 0;
 
     // 스탯 증가값 변수
-    float bulletSpeedMul = 1.3f;
+    float bulletSpeedMul = 1.2f;
     float criticalDamageMul = 1.1f;
     int criticalChanceAdd = 10;
 

@@ -111,10 +111,9 @@ public class GameManager : MonoBehaviour
         if (enemySpawnTime - timeDecreaseValue > 0.02f)
         {
             enemySpawnTime -= timeDecreaseValue;
-            Debug.Log("Enemy Spawn Time : " + enemySpawnTime);
         }
 
-        if (enemySpawnTime < 0.7f)
+        if (enemySpawnTime < 0.75f)
         {
             enemySpawnTime -= 0.1f;
         }
@@ -122,8 +121,9 @@ public class GameManager : MonoBehaviour
         if (enemySpawnTime <= 0.05f)
         {
             enemySpawnTime = 0.05f;
-        } 
-        
+        }
+
+        Debug.Log("Enemy Spawn Time : " + enemySpawnTime);
 
         // 새로운 Enemy Spawn InvokeRepeating 설정
         CancelInvoke("spawnEnemyInAreas");

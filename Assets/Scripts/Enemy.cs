@@ -60,10 +60,10 @@ public class Enemy : MonoBehaviour
         // GameManager 값에서 가져온 wave의 level 값
         level = gameManager.level;
 
-        setHP(level / 3 + 2);
-        setMoveSpeed(level / 3 * 0.5f + 0.8f);
+        setHP(level / 3 * 1.2f + 1.7f);
+        setMoveSpeed(level / 3 * 0.7f + 0.8f);
         setDamage(1);
-        setValue(level / 3 + 1);
+        setValue(level / 5 + 1);
     }
 
     // Enemy 이동 방향 결정 (Tower가 있는 곳)

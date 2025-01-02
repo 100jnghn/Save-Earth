@@ -37,7 +37,7 @@ public class Tower : MonoBehaviour
 
     void init()
     {
-        maxHP = hp = 20;        // 체력 초기값 설정
+        maxHP = hp = 30;        // 체력 초기값 설정
         attackTime = 3f;        // 공격 속도 초기값 설정
         bulletSpeed = 1f;       // 투사체 속도 초기값 설정
         bulletPower = 2f;       // 공격력 초기값 설정
