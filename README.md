@@ -23,5 +23,4 @@
 #### ⬇️ Click IMG to play with youtube ⬇️
 <br>
 
-[![SaveEarth](http://img.youtube.com/vi/9Gf8VeshwNc/0.jpg)](https://youtu.be/9Gf8VeshwNc?t=0s)
-https://youtube.com/shorts/ojjfhA0Ug48?feature=share
+[![SaveEarth](http://img.youtube.com/vi/ojjfhA0Ug48/0.jpg)](https://youtube.com/shorts/ojjfhA0Ug48)
